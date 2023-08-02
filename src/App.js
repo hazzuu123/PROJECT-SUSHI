@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
+import './App.css'
 
 
 function App() {
@@ -82,7 +83,7 @@ const Map = () => {
 
   return (
     <>
-      <button onClick={() => { setTrue(isTrue + 1); }}>현재위치!</button>
+      <button onClick={() => { setTrue(isTrue + 1); }}>현재위치</button>
       <div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />
     </>
   )
