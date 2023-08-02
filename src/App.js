@@ -6,13 +6,17 @@ function App() {
 
   return (
     <div className='App'>
-      <Map></Map>
+      <Routes>
+        <Route path="/" element={<Map></Map>}></Route>
+      </Routes>
+
     </div>
   )
 }
 const Map = () => {
   const mapContainer = useRef(null);
   const [currentPosition, setCurrentPosition] = useState({ latitude: 37.5665, longitude: 126.9780 }); // 좌표 초기화(서울 시청)
+  const [isTrue, setTrue] = useState(0);
 
 
 
@@ -57,6 +61,7 @@ const Map = () => {
           (position) => {
             const { latitude, longitude } = position.coords;
             setCurrentPosition({ latitude, longitude });
+            console.log(latitude, longitude);
           },
           (error) => {
             console.error('Error getting current position:', error);
@@ -64,9 +69,10 @@ const Map = () => {
         );
       }
     };
-
-    getCurrentLocation(); // 컴포넌트 마운트 시에 현재 위치를 업데이트하도록 호출
-  }, []);
+    if (isTrue) {
+      getCurrentLocation(); // 컴포넌트 마운트 시에 현재 위치를 업데이트하도록 호출
+    }
+  }, [isTrue]);
 
   if (currentPosition === false) {
     return <div>Loading...</div>; // 현재 위치 정보가 없을 때 "Loading..."을 표시
@@ -76,11 +82,10 @@ const Map = () => {
 
 
   return (
-    <Routes>
-      <Route path="/" element={<div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />}></Route>
-
-    </Routes>
-
+    <>
+      <button onClick={() => { setTrue(isTrue + 1); console.log(isTrue); }}>현재위치</button>
+      <div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />
+    </>
   )
 };
 
