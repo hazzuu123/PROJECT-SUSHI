@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Routes, Route, Link } from 'react-router-dom'
 
 
 function App() {
@@ -74,7 +75,13 @@ const Map = () => {
 
 
 
-  return <div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />;
+  return (
+    <Routes>
+      <Route path="/" element={<div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />}></Route>
+
+    </Routes>
+
+  )
 };
 
 export default App;
