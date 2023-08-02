@@ -34,7 +34,6 @@ const Map = () => {
     script.onload = () => {
       window.kakao.maps.load(() => {
 
-        console.log(currentPosition.latitude, currentPosition.longitude);
         const options = {
           center: new window.kakao.maps.LatLng(currentPosition.latitude, currentPosition.longitude), // 지도 중심 좌표 
           level: 5, // 확대 레벨
@@ -83,7 +82,7 @@ const Map = () => {
 
   return (
     <>
-      <button onClick={() => { setTrue(isTrue + 1); console.log(isTrue); }}>현재위치</button>
+      <button onClick={() => { setTrue(isTrue + 1); }}>현재위치!</button>
       <div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />
     </>
   )
