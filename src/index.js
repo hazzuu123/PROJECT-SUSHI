@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Reset } from 'styled-reset'
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.Fragment>
     <Reset />
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.Fragment>
 );
 
