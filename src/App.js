@@ -4,10 +4,27 @@ import './App.css'
 
 
 function App() {
+
+  /** 초밥집 등록 */
   useEffect(() => {
-    fetch('http://146.56.180.210:3200/sushi')
-      .then((r) => r.json())
-      .then((r) => console.log(r));
+    fetch("http://146.56.180.210:3200/sushi", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: "초밥",
+        menus: [{
+          name: "연어초밥",
+          price: "20000원"
+        }],
+        location: '테헤란로 52',
+        phone: '010 - 1234 - 1234'
+      })
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+
   }, []);
   return (
     <div className='App'>
