@@ -4,7 +4,7 @@ import './App.css'
 
 
 function App() {
-
+  fetch('localhost:3200/sushi').then(r => console.log(r))
   return (
     <div className='App'>
       <Routes>
