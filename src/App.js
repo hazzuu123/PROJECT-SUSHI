@@ -78,7 +78,6 @@ const Map = () => {
           (position) => {
             const { latitude, longitude } = position.coords;
             setCurrentPosition({ latitude, longitude });
-            console.log(latitude, longitude);
           },
           (error) => {
             console.error('Error getting current position:', error);
@@ -100,6 +99,9 @@ const Map = () => {
 
   return (
     <>
+      <div className="bg-blue-500 text-white p-4">
+        This is a Test Component with Tailwind CSS!
+      </div>
       <button onClick={() => { setTrue(isTrue + 1); }}>현재위치</button>
       <div style={{ width: '100%', height: '100vh' }} ref={mapContainer} />
     </>
