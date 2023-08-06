@@ -4,7 +4,11 @@ import './App.css'
 
 
 function App() {
-  fetch('localhost:3200/sushi').then(r => console.log(r))
+  useEffect(() => {
+    fetch('http://146.56.180.210:3200/sushi')
+      .then((r) => r.json())
+      .then((r) => console.log(r));
+  }, []);
   return (
     <div className='App'>
       <Routes>
@@ -26,6 +30,7 @@ const Map = () => {
     // 카카오맵 API 키
     const KAKAO_MAP_API_KEY = process.env.REACT_APP_API_KEY;
 
+
     // 카카오맵 API 스크립트를 동적으로 추가
     const script = document.createElement('script');
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
@@ -34,7 +39,6 @@ const Map = () => {
     // 스크립트 로드가 완료되면 지도를 생성
     script.onload = () => {
       window.kakao.maps.load(() => {
-
         const options = {
           center: new window.kakao.maps.LatLng(currentPosition.latitude, currentPosition.longitude), // 지도 중심 좌표 
           level: 5, // 확대 레벨
