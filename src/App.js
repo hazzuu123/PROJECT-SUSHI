@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
+import axios from 'axios';
 import './App.css'
 
 
@@ -7,23 +8,18 @@ function App() {
 
   /** 초밥집 등록 */
   useEffect(() => {
-    fetch("http://146.56.180.210:3200/sushi", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: "초밥",
-        menus: [{
-          name: "연어초밥",
-          price: "20000원"
-        }],
-        location: '테헤란로 52',
-        phone: '010 - 1234 - 1234'
-      })
-    })
-      .then((response) => response.json())
-      .then((result) => console.log(result));
+    const postData = {
+      name: '초밥',
+      menus: [{
+        name: '연어초밥',
+        price: '20000원'
+      }],
+      location: '테헤란로 52',
+      phone: '010 - 1234 - 1235'
+    }
+    axios.post('http://146.56.180.210:3200/sushi', postData)
+      .then(respose => console.log(respose.data))
+      .catch(error => console.log('Error:', error));
 
   }, []);
   return (
