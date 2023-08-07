@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { postSushiRestaurant } from "../apis/sushi";
+import style from './enroll-restaurant.module.css';
 /** 새로운 초밥집 등록 페이지*/
 const EnrollRestaurantPage = () => {
     const [postData, setPostData] = useState({
@@ -38,8 +39,8 @@ const EnrollRestaurantPage = () => {
     };
 
     return (
-        <>
-            <h1>새로운 초밥집 등록 페이지</h1>
+        <div>
+            <h3 className={style.h3}>새로운 초밥집 등록 페이지</h3>
             <div>
                 <label>이름:</label>
                 <input
@@ -49,14 +50,16 @@ const EnrollRestaurantPage = () => {
                 />
             </div>
             <div>
-                <label>메뉴:</label>
+                <label>메뉴</label>
                 {postData.menus.map((menu, index) => (
                     <div key={index}>
+                        <label>메뉴이름:</label>
                         <input
                             type="text"
                             value={menu.name}
                             onChange={(e) => handleMenuChange(index, 'name', e.target.value)}
                         />
+                        <label>가격:</label>
                         <input
                             type="text"
                             value={menu.price}
@@ -92,7 +95,7 @@ const EnrollRestaurantPage = () => {
                 />
             </div>
             <button onClick={() => { handlePostRequest() }}>등록</button>
-        </>
+        </div>
 
 
 
