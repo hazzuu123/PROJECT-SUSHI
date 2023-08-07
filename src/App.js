@@ -5,6 +5,7 @@ import './App.css'
 import SushiListPage from './pages/sushi-list';
 import MapPage from './pages/map';
 import MainPage from './pages/main';
+import EnrollRestaurantPage from './pages/enroll-restaurant';
 
 export default function App() {
   /** 초밥집 등록 */
@@ -26,9 +27,10 @@ export default function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<MainPage/>}></Route>
-        <Route path="/map" element={<MapPage/>}></Route>
-        <Route path="/sushi-list" element={<SushiListPage/>} />
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/map" element={<MapPage />}></Route>
+        <Route path="/sushi-list" element={<SushiListPage />} />
+        <Route path="/enroll-restaurant" element={<EnrollRestaurantPage />}></Route>
       </Routes>
 
     </div>
