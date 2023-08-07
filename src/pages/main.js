@@ -6,6 +6,7 @@ export default function MainPage() {
       <Link to="/map">Map</Link>
       <Link to="/sushi-list">Sushi List</Link>
       <Link to="/enroll-restaurant">Enroll restaurant</Link>
+      <Link to="/search-restaurant">Search restaurant</Link>
     </main>
   )
 }

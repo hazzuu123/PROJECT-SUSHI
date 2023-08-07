@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { postSushiRestaurant } from "../apis/sushi";
+import { postSushiRestaurant } from "../../apis/sushi";
 import style from './enroll-restaurant.module.css';
 /** 새로운 초밥집 등록 페이지*/
 const EnrollRestaurantPage = () => {
