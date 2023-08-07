@@ -39,7 +39,7 @@ const EnrollRestaurantPage = () => {
     };
 
     return (
-        <div>
+        <div className={style.container}>
             <h3 className={style.h3}>새로운 초밥집 등록 페이지</h3>
             <div>
                 <label>이름:</label>

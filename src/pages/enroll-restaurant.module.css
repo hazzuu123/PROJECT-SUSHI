@@ -1,5 +1,21 @@
+.container {
+    width: 800px;
+    margin-top: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .h3 {
-    background-color: #b4b2b2;
     font-size: 19px;
     font-weight: bold;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #b4b2b2;
 }
