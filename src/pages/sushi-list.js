@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { getSushiList } from "../apis/sushi";
 
 export default function SushiListPage() {
   const [sushiList, setSushiList] = useState([]);
 
   useEffect(() => {
-    axios.get("http://146.56.180.210:3200/sushi").then((response) => {
-      setSushiList(response.data);
-    });
+    getSushiList().then((data) => setSushiList(data))
   }, []);
 
   return (
-    <main>
-      <h1 className="text-xl">초밥 리스트</h1>
-      <ul>  
+    <main className="flex flex-col items-center p-4">
+      <h1 className="text-3xl">초밥 리스트</h1>
+
+      <ul className="flex flex-col gap-4 p-4 shadow-lg">
         {sushiList.map((sushi) => (
           <li className="flex gap-4">
             <span>{sushi.name}</span>
