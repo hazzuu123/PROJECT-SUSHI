@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css'
 import SushiListPage from './pages/sushi-list';
 import MapPage from './pages/map';
+import MainPage from './pages/main';
 
 export default function App() {
   /** 초밥집 등록 */
@@ -25,7 +26,8 @@ export default function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<MapPage/>}></Route>
+        <Route path="/" element={<MainPage/>}></Route>
+        <Route path="/map" element={<MapPage/>}></Route>
         <Route path="/sushi-list" element={<SushiListPage/>} />
       </Routes>
 
