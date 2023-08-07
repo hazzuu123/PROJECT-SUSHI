@@ -66,9 +66,6 @@ export default function MapPage() {
 
   return (
     <>
-      <div className="bg-blue-500 text-white p-4">
-        This is a Test Component with Tailwind CSS!
-      </div>
       <button
         onClick={() => {
           setTrue(isTrue + 1);

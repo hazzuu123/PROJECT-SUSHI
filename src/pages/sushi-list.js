@@ -13,8 +13,8 @@ export default function SushiListPage() {
       <h1 className="text-3xl">초밥 리스트</h1>
 
       <ul className="flex flex-col gap-4 p-4 shadow-lg">
-        {sushiList.map((sushi) => (
-          <li className="flex gap-4">
+        {sushiList.map((sushi, i) => (
+          <li className="flex gap-4" key={i}>
             <span>{sushi.name}</span>
             <span>{sushi.location}</span>
             <span>{sushi.phone}</span>
