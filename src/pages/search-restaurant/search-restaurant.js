@@ -46,9 +46,9 @@ const SearchRestaurantPage = () => {
                     console.log('주소 검색 실패');
                 }
             });
-            console.log('성공!');
+
         } else {
-            console.log('실패!');
+            console.log('카카오맵 API 로드 실패');
         }
 
     }
@@ -59,6 +59,7 @@ const SearchRestaurantPage = () => {
         const KAKAO_MAP_API_KEY = process.env.REACT_APP_API_KEY;
 
         // 카카오맵 API 스크립트를 동적으로 추가
+        // 카카오맵 지도 라이브러리중 services 라이브러리 파라미터 추가
         const script = document.createElement("script");
         script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&libraries=services&autoload=false`;
 
