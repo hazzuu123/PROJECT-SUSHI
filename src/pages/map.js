@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import style from './map.module.css'; // Import the CSS module
 
 export default function MapPage() {
   const mapContainer = useRef(null);
@@ -61,19 +62,20 @@ export default function MapPage() {
   }, [isTrue]);
 
   if (currentPosition === false) {
-    return <div>Loading...</div>; // 현재 위치 정보가 없을 때 "Loading..."을 표시
+    return <div className={style.loading}>Loading...</div>;
   }
 
   return (
-    <>
+    <div className={style.mapContainer}>
       <button
+        className={style.locationButton}
         onClick={() => {
           setTrue(isTrue + 1);
         }}
       >
-        현재위치
+        현재 위치
       </button>
-      <div style={{ width: "100%", height: "100vh" }} ref={mapContainer} />
-    </>
+      <div className={style.map} ref={mapContainer} />
+    </div>
   );
 }

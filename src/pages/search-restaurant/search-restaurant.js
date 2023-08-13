@@ -1,9 +1,11 @@
-import style from './search-restaurant.module.css'
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import style from './search-restaurant.module.css'; // Import the CSS module
+
 const SearchRestaurantPage = () => {
     const mapContainer = useRef(null);
-    const [location, setLocation] = useState('')
-    const handleInputChange = value => setLocation(value)
+    const [location, setLocation] = useState('');
+
+    const handleInputChange = (value) => setLocation(value);
 
     /** 주소로 장소 표시하기(지도)*/
     const handleSearchRestaurant = () => {
@@ -76,22 +78,23 @@ const SearchRestaurantPage = () => {
             document.head.removeChild(script);
         };
     }, [])
+
     return (
-        <div>
-            <div>
+        <div className={style.searchContainer}>
+            <div className={style.inputContainer}>
                 <input
+                    className={style.input}
                     type='text'
                     value={location}
                     onChange={(e) => handleInputChange(e.target.value)}
                 />
-                <button onClick={handleSearchRestaurant}>입력</button>
+                <button className={style.searchButton} onClick={handleSearchRestaurant}>
+                    입력
+                </button>
             </div>
-            <div style={{ width: "100%", height: "100vh" }} ref={mapContainer} />
+            <div className={style.mapContainer} ref={mapContainer} />
         </div>
-
-
-
-    )
-}
+    );
+};
 
 export default SearchRestaurantPage;
