@@ -40,12 +40,18 @@ export const Detail = () => {
   }, []);
 
   if (sushi) {
+    const { name, location, phone, menus, starsAvg } = sushi;
     return (
       <>
-        <div>{sushi.name}</div>
-        <div>{sushi.location}</div>
-        <div>{sushi.phone}</div>
-        <div>{sushi.starsAvg}</div>
+        <div>{name}</div>
+        <div>{location}</div>
+        <div>{phone}</div>
+        <ul>
+          {menus && menus.map((menu, i) => (
+            <li key={i}>{menu}</li>
+          ))}
+        </ul>
+        <div>{starsAvg}</div>
       </>
     )
   }

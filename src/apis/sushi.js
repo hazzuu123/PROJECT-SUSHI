@@ -11,7 +11,6 @@ export async function postSushiRestaurant(postData) {
 }
 
 export async function getSushi(id) {
-  console.log(`http://146.56.180.210:3200/sushi/${id}`)
   const response = await axios.get(`http://146.56.180.210:3200/sushi/${id}`)
   return response.data
 }
