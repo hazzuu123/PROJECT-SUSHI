@@ -92,7 +92,7 @@ const SearchRestaurantPage = () => {
                     입력
                 </button>
             </div>
-            <div className={style.mapContainer} ref={mapContainer} />
+            <div className={style.mapContainer} ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
         </div>
     );
 };
