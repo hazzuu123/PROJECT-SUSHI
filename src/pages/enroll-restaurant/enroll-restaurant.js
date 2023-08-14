@@ -38,29 +38,36 @@ const EnrollRestaurantPage = () => {
         });
     };
 
+
+    
     return (
         <div className={style.container}>
-            <h3 className={style.h3}>새로운 초밥집 등록 페이지</h3>
+            <div className={style.titleDiamond}>
+                <h1 className={style.h1}>새로운 초밥집 등록 페이지</h1>
+            </div>
             <div>
-                <label>이름:</label>
+                <label className={style.blueLabel}>이름</label>
                 <input
+                    className={style.largeInput}
                     type="text"
                     value={postData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                 />
             </div>
             <div>
-                <label>메뉴</label>
+                <label className={style.blueLabel}>메뉴</label>
                 {postData.menus.map((menu, index) => (
                     <div key={index}>
-                        <label>메뉴이름:</label>
+                        <label className={style.blueLabel}>메뉴이름</label>
                         <input
+                            className={style.largeInput}
                             type="text"
                             value={menu.name}
                             onChange={(e) => handleMenuChange(index, 'name', e.target.value)}
                         />
-                        <label>가격:</label>
+                        <label className={style.blueLabel}>가격</label>
                         <input
+                            className={style.largeInput}
                             type="text"
                             value={menu.price}
                             onChange={(e) => handleMenuChange(index, 'price', e.target.value)}
@@ -68,6 +75,7 @@ const EnrollRestaurantPage = () => {
                     </div>
                 ))}
                 <button
+                    className={style.addButton}
                     onClick={() => {
                         setPostData({
                             ...postData,
@@ -79,28 +87,26 @@ const EnrollRestaurantPage = () => {
                 </button>
             </div>
             <div>
-                <label>위치:</label>
+                <label className={style.blueLabel}>위치</label>
                 <input
+                    className={style.largeInput}
                     type="text"
                     value={postData.location}
                     onChange={(e) => handleInputChange('location', e.target.value)}
                 />
             </div>
             <div>
-                <label>전화번호:</label>
+                <label className={style.blueLabel}>전화번호</label>
                 <input
+                    className={style.largeInput}
                     type="text"
                     value={postData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                 />
             </div>
-            <button onClick={() => { handlePostRequest() }}>등록</button>
+            <button className={style.submitButton} onClick={() => { handlePostRequest() }}>등록</button>
         </div>
-
-
-
     )
-
 }
 
 export default EnrollRestaurantPage;
