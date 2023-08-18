@@ -1,12 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
-import axios from 'axios';
 import './App.css'
-import { SushiListPage, Detail } from './pages/sushi-list';
 import MapPage from './pages/map';
 import MainPage from './pages/main';
 import EnrollRestaurantPage from './pages/enroll-restaurant/enroll-restaurant';
 import SearchRestaurantPage from './pages/search-restaurant/search-restaurant';
+import { Detail } from './pages/sushi-detail/sushi-detail';
+import { SushiListPage } from './pages/sushi-list/sushi-list';
 export default function App() {
 
   return (
