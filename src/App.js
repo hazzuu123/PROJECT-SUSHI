@@ -9,7 +9,7 @@ import { SushiListPage } from './pages/sushi-list/sushi-list';
 export default function App() {
 
   return (
-    <div className='App'>
+    <div className='App min-h-screen bg-bg'>
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/map" element={<MapPage />}></Route>
@@ -18,7 +18,6 @@ export default function App() {
         <Route path="/enroll-restaurant" element={<EnrollRestaurantPage />}></Route>
         <Route path="/search-restaurant" element={<SearchRestaurantPage />}></Route>
       </Routes>
-
     </div>
   )
 }
