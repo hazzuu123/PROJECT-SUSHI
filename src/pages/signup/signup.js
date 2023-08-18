@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from './signup.module.css'
-import { postSignup } from "../../apis/sushi"
+import { postSignup, checkUpDuplicateRequest } from "../../apis/sushi"
+
 
 /** 회원가입 페이지 */
 const Signup = () => {
@@ -49,6 +50,23 @@ const Signup = () => {
         }
     }
 
+    /** 아이디 중복 검사  */
+    const checkUpDuplicate = async () => {
+        const postData = {
+            'email': email,
+        }
+
+        try {
+            const response = await checkUpDuplicateRequest(postData)
+            console.log('중복검사 요청 성공', response.data)
+            if (response.data.isExist) {
+                setEmail('')
+                EmailRef.current.focus()
+            }
+        } catch {
+            console.log('중복검사 요청 실패')
+        }
+    }
     return (
         <div>
             <form onSubmit={handleSignup}>
@@ -62,6 +80,7 @@ const Signup = () => {
                         onChange={handleInputEmail}
                         ref={EmailRef} //아이디 입력란에 자동 포커스를 설정
                     />
+                    <button type="button" onClick={checkUpDuplicate}>중복검사</button>
                 </div>
                 <div>
                     <label htmlFor="password">PASSWORD </label>

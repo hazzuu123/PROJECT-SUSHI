@@ -30,3 +30,8 @@ export async function postLogin(postData) {
   const response = await axios.post('http://146.56.180.210:3200/auth/login', postData)
   return response
 }
+
+export async function checkUpDuplicateRequest(postData) {
+  const response = await axios.post('http://146.56.180.210:3200/auth/check-duplicate', postData)
+  return response
+}
