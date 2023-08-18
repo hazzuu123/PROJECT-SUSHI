@@ -18,12 +18,17 @@ export const Detail = () => {
   const handleSubmitReview = (event) => {
     event.preventDefault();
     // reviewRating와 reviewText 변수를 사용하여 리뷰 정보를 서버에 전송
+    const token = localStorage.getItem('token')
     let postData = {
       sushiId: id,
       contents: reviewText,
       star: reviewRating, // 0 ~ 5
+
     };
-    postReview(postData)
+
+    postReview(postData, {
+      headers: { Authorization: `${token}`, },
+    })
       .then((data) => {
         fetchSushiDetail(id);
       })

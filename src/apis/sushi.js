@@ -16,8 +16,8 @@ export async function getSushi(id) {
   return response.data
 }
 
-export async function postReview(postData) {
-  const response = await axios.post("http://146.56.180.210:3200/sushi/review", postData);
+export async function postReview(postData, headers) {
+  const response = await axios.post("http://146.56.180.210:3200/sushi/review", postData, headers);
   return response
 }
 
