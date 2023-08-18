@@ -11,7 +11,7 @@ import Login from './pages/login/login';
 export default function App() {
 
   return (
-    <div className='App'>
+    <div className='App min-h-screen bg-bg'>
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/map" element={<MapPage />}></Route>
@@ -23,7 +23,6 @@ export default function App() {
         <Route path="/login" element={<Login />}></Route>
 
       </Routes>
-
     </div>
   )
 }

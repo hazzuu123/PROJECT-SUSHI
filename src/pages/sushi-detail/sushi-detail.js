@@ -11,7 +11,6 @@ export const Detail = () => {
   const [reviewText, setReviewText] = useState(""); //리뷰
 
   const fetchSushiDetail = (id) => {
-    console.log('fetch ss')
     getSushi(id).then((data) => setSushi(data));
   };
 
