@@ -10,6 +10,7 @@
 .menuButton {
   display: inline-block;
   padding: 0.5rem 1rem;
+  position: relative;
   background-color: #48bb78;
   color: white;
   border-radius: 0.25rem;
