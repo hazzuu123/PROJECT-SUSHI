@@ -18,13 +18,12 @@ export function SushiListPage() {
 
       <ul className="flex flex-col gap-4 p-4 shadow-lg">
         {sushiList.map((sushi, i) => (
-          <li className="flex gap-4" key={i} onClick={() => { navigate(`/sushi-list/${i + 1}`) }} style={{ cursor: "pointer" }}>
-            <span>{sushi.id}</span>
+          <li className="flex gap-4" key={i} onClick={() => { navigate(`/sushi-list/${sushi._id}`) }} style={{ cursor: "pointer" }}>
+            <span>{sushi._id}</span>
             <span>{sushi.name}</span>
             <span>{sushi.location}</span>
             <span>{sushi.phone}</span>
           </li>
-
         ))}
       </ul>
     </main>
@@ -46,7 +45,7 @@ export const Detail = () => {
     let postData = {
       "sushiId": id,
       "contents": reviewText,
-      "stars": reviewRating // 0 ~ 5
+      "star": reviewRating // 0 ~ 5
     }
     postReview(postData)
       .then((data) => {
@@ -66,30 +65,31 @@ export const Detail = () => {
 
 
   useEffect(() => {
-    getSushi(id).then((data) => setSushi(data))
+    getSushi(id)
+      .then((data) => { setSushi(data) })
   }, []);
 
   if (sushi) {
-    const { id, name, location, phone, menus, starsAvg } = sushi;
+    // const { _id, name, location, phone, menus, starsAvg } = sushi;
     return (
       <>
         {/* 아이디,가게이름,위치,전화번호 */}
-        <div><span>아이디: </span>{id}</div>
-        <div><span>가게이름: </span>{name}</div>
-        <div><span>주소: </span>{location}</div>
-        <div><span>전화번호: </span>{phone}</div>
+        <div><span>아이디: </span>{sushi._id}</div>
+        <div><span>가게이름: </span>{sushi.name}</div>
+        <div><span>주소: </span>{sushi.location}</div>
+        <div><span>전화번호: </span>{sushi.phone}</div>
         {/* 메뉴*/}
         <ul>
           <span>메뉴: </span>
-          {menus && menus.map((menu, i) => (
-            <li key={i} >{menu} </li>
+          {sushi.menus && sushi.menus.map((menu, i) => (
+            <li key={i} >{menu.name} </li>
           ))}
         </ul >
 
         <div>
           {/* 평점 */}
           <span>평점: </span>
-          <span>{parseFloat(starsAvg).toFixed(1)}</span>
+          <span>{parseFloat(sushi.starsAvg).toFixed(1)}</span>
           {/* 클릭하면 평점과 리뷰를 작성하는 폼을 화면에 보여준다 */}
           <FaPencilAlt onClick={() => setShowReviewForm(!showReviewForm)}></FaPencilAlt>
         </div>
