@@ -17,6 +17,6 @@ export async function getSushi(id) {
 }
 
 export async function postReview(postData) {
-  const response = await axios.post("http://146.56.180.210:3200/review", postData);
+  const response = await axios.post("http://146.56.180.210:3200/sushi/review", postData);
   return response
 }
