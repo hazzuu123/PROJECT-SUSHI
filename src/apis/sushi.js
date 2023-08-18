@@ -20,3 +20,13 @@ export async function postReview(postData) {
   const response = await axios.post("http://146.56.180.210:3200/sushi/review", postData);
   return response
 }
+
+export async function postSignup(postData) {
+  const response = await axios.post('http://146.56.180.210:3200/auth/signup', postData)
+  return response
+}
+
+export async function postLogin(postData) {
+  const response = await axios.post('http://146.56.180.210:3200/auth/login', postData)
+  return response
+}
