@@ -1,5 +1,5 @@
 import React from "react";
-import {BsStarFill, BsStarHalf, BsStar} from 'react-icons/bs'
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 
 export default function StarRating({ value, maxValue }) {
   const starCount = 5;
@@ -12,13 +12,13 @@ export default function StarRating({ value, maxValue }) {
   return (
     <div className="flex text-yellow-300">
       {Array.from({ length: fullStars }, (_, index) => (
-        <BsStarFill />
+        <BsStarFill key={index} />
       ))}
       {halfStar && (
         <BsStarHalf />
       )}
       {Array.from({ length: emptyStars }, (_, index) => (
-        <BsStar />
+        <BsStar key={index} />
       ))}
     </div>
   );
