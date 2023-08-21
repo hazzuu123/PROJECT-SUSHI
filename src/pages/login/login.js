@@ -2,20 +2,21 @@ import styles from './login.module.css'
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import { postLogin } from '../../apis/sushi'
+import { useDispatch } from 'react-redux'
+import { changeUser } from '../../store'
 
 
 const Login = () => {
+    const dispatch = useDispatch()
     const EmailRef = useRef()
     const navigate = useNavigate()
+
 
     //이메일, 패스워드
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // 새로고침할 때마다 이메일 입력란에 자동 포커스를 준다
-    useEffect(() => {
-        EmailRef.current.focus()
-    }, [])
+
 
     const handleInputEmail = (event) => { setEmail(event.target.value) }
     const handleInputPassword = (event) => { setPassword(event.target.value) }
@@ -72,11 +73,17 @@ const Login = () => {
                 // 토큰 만료 시 자동 로그아웃
                 localStorage.removeItem('token');
                 localStorage.removeItem('tokenExpiration');
+                dispatch(changeUser({ email: '', name: '', location: '', age: '' })) // store의 계정 데이터를 ''으로 초기화
                 navigate('/login', { replace: true }); // 로그인 페이지로 이동
+                EmailRef.current.focus()
             } else {
                 // 중복로그인을 피하기 위해, 토큰 유효한 경우 로그인 페이지로 이동하지 않음
                 navigate('/', { replace: true });
             }
+        }
+        else {
+            // 토큰이 없다면 로그인할 준비가 되어있으므로 이메일 입력란에 자동 포커스를 준다
+            EmailRef.current.focus()
         }
     }, [])
 

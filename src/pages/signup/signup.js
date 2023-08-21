@@ -28,10 +28,7 @@ const Signup = () => {
 
 
 
-    // 새로고침할 때마다 이메일 입력란에 자동 포커스를 준다
-    useEffect(() => {
-        EmailRef.current.focus()
-    }, [])
+
 
     /** 로그인이 되어있다면 회원가입을 못하도록 설정 */
     useEffect(() => {
@@ -40,9 +37,12 @@ const Signup = () => {
         if (token) {
             navigate('/', { replace: true })
         }
+        else { // 토큰이 없다면 회원가입할 준비가 되어있으므로 이메일 입력란에 자동 포커스
+            EmailRef.current.focus()
+        }
     })
 
-    /** 로그인 버튼 클릭 시 */
+    /** 회원가입 버튼 클릭 시 */
     const handleSignup = async (event) => {
         event.preventDefault();
 
