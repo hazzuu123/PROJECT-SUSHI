@@ -41,7 +41,7 @@ const Login = () => {
                 // 로그인 성공 시 
 
                 // 토큰과 데이터를 저장
-                const expiresIn = 60 * 1; // 토큰의 만료 60분
+                const expiresIn = 60 * 60; // 토큰의 만료 60분
                 const expirationTime = new Date().getTime() + expiresIn * 1000;
 
                 localStorage.setItem('token', response.data.token)

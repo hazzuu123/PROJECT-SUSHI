@@ -6,7 +6,7 @@ let user = createSlice({
         email: '',
         name: '',
         location: '',
-        age: ''
+        age: 0
     },
     reducers: {
         changeUser(state, action) {
