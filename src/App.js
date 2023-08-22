@@ -15,7 +15,6 @@ import { postLogin } from './apis/sushi';
 import { changeUser } from './store';
 export default function App() {
 
-  const [intialData, setInitialData] = useState(null)
   let userData = useSelector((state) => state.user)
   const dispatch = useDispatch()
   console.log(userData)
@@ -23,34 +22,33 @@ export default function App() {
   useEffect(() => {
     // 로그인 상태 확인 후 초기 데이터 가져오기
     if (localStorage.getItem('token')) {
-      // 리덕스에 userData 가 있는 경우 초기 데이터 가져오기 생략
-      if (userData.email !== "") {
-        return
-      }
-
       // 로그인이 되어있다면 서버로부터 초기 데이터를 가져온다
       const getInitialData = async () => {
-
         try {
-          const response = await axios.get('/api/get-initial-data', {
+          const response = await axios.get('http://146.56.180.210:3200/auth/user-data', {
             headers: {
               Authorization: `${localStorage.getItem('token')}`
             },
           })
-          setInitialData(response.data)
-          console.log(response.data)
+
+          dispatch(changeUser(
+            {
+              email: response.data.email,
+              name: response.data.name,
+              location: response.data.location,
+              age: response.data.age
+            }
+          )) // store 변경
+          console.log('불러오기 성공')
+
+
         } catch (error) {
           console.log('초기데이터 불러오기 실패: ')
         }
       }
       getInitialData()
-      dispatch(changeUser({ email: 'iiujj', name: 'name', location: 'location', age: 'age' })) // store 변경
-      // store.js 에 initialData 를 저장한다.
-      // {email: '',
-      // password: '',
-      // name: '',
-      // location: '',
-      // age: ''}
+
+
     }
   }, [])
 
