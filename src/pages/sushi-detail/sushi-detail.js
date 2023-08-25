@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSushi, postReview } from "../../apis/sushi";
+import ClickStarRating from "../../components/click-star-rating";
 import { FaPencilAlt } from "react-icons/fa"; //react-icons
 
 export const Detail = () => {
@@ -86,14 +87,16 @@ export const Detail = () => {
           <form onSubmit={handleSubmitReview}>
             <label>
               Rating:
-              <input
+              {/* <input
                 type="number"
                 step="0.5"
                 min="0"
                 max="5"
                 value={reviewRating}
                 onChange={(e) => setReviewRating(parseFloat(e.target.value))}
-              />
+              /> */}
+              {/* 리뷰작성자가 매기는 별점(별 그림) */}
+              <ClickStarRating setReviewRating={setReviewRating}></ClickStarRating>
             </label>
             <label>
               Review:
@@ -105,6 +108,8 @@ export const Detail = () => {
             <button type="submit">Submit Review</button>
           </form>
         )}
+
+
       </>
     );
   }
