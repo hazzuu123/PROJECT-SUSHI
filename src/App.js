@@ -8,6 +8,8 @@ import { Detail } from './pages/sushi-detail/sushi-detail';
 import { SushiListPage } from './pages/sushi-list/sushi-list';
 import Signup from './pages/signup/signup';
 import Login from './pages/login/login';
+import Logout from './pages/login/logout';
+import DeleteAccount from './pages/delete-account/delete-account';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
@@ -67,6 +69,9 @@ export default function App() {
         <Route path="/search-restaurant" element={<SearchRestaurantPage />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login getInitialData={getInitialData} />}></Route>
+        <Route path="/logout" element={<Logout></Logout>}></Route>
+        <Route path="/delete-account" element={<DeleteAccount></DeleteAccount>}></Route>
+        <Route path="/delete-success" element={<div>회원가입에 완료되었습니다.</div>}></Route>
 
       </Routes>
     </div>
