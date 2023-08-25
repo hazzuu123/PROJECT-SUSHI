@@ -25,36 +25,36 @@ export default function App() {
 
       if (userData.email !== "") return
 
-      // 로그인이 되어있다면 서버로부터 초기 데이터를 가져온다
-      const getInitialData = async () => {
-        try {
-          const response = await axios.get('http://146.56.180.210:3200/auth/user-data', {
-            headers: {
-              Authorization: `${localStorage.getItem('token')}`
-            },
-          })
 
-          dispatch(changeUser(
-            {
-              email: response.data.email,
-              name: response.data.name,
-              location: response.data.location,
-              age: response.data.age
-            }
-          )) // store 변경
-          console.log('불러오기 성공')
-
-
-        } catch (error) {
-          console.log('초기데이터 불러오기 실패: ')
-        }
-      }
       getInitialData()
 
 
     }
   }, [])
+  // 로그인이 되어있다면 서버로부터 초기 데이터를 가져온다
+  const getInitialData = async () => {
+    try {
+      const response = await axios.get('http://146.56.180.210:3200/auth/user-data', {
+        headers: {
+          Authorization: `${localStorage.getItem('token')}`
+        },
+      })
 
+      dispatch(changeUser(
+        {
+          email: response.data.email,
+          name: response.data.name,
+          location: response.data.location,
+          age: response.data.age
+        }
+      )) // store 변경
+      console.log('불러오기 성공')
+
+
+    } catch (error) {
+      console.log('초기데이터 불러오기 실패: ')
+    }
+  }
 
   return (
     <div className='App min-h-screen bg-bg'>
@@ -66,7 +66,7 @@ export default function App() {
         <Route path="/enroll-restaurant" element={<EnrollRestaurantPage />}></Route>
         <Route path="/search-restaurant" element={<SearchRestaurantPage />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={<Login getInitialData={getInitialData} />}></Route>
 
       </Routes>
     </div>
