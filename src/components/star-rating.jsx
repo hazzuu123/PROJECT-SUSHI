@@ -7,7 +7,7 @@ export default function StarRating({ value, maxValue }) {
   const halfStar = (value / maxValue) * starCount - fullStars >= 0.5;
   const emptyStars = starCount - fullStars - (halfStar ? 1 : 0);
 
-  console.log('full', value, maxValue, fullStars)
+  // console.log('full', value, maxValue, fullStars)
 
   return (
     <div className="flex text-yellow-300">

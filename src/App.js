@@ -22,6 +22,9 @@ export default function App() {
   useEffect(() => {
     // 로그인 상태 확인 후 초기 데이터 가져오기
     if (localStorage.getItem('token')) {
+
+      if (userData.email !== "") return
+
       // 로그인이 되어있다면 서버로부터 초기 데이터를 가져온다
       const getInitialData = async () => {
         try {
