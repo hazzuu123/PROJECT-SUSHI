@@ -1,9 +1,10 @@
 import styles from './login.module.css'
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
-import { postLogin } from '../../apis/sushi'
+import { getInitialDataRequest, postLogin } from '../../apis/sushi'
 import { useDispatch } from 'react-redux'
 import { changeUser } from '../../store'
+import axios from 'axios'
 
 
 const Login = () => {
@@ -47,6 +48,10 @@ const Login = () => {
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('tokenExpiration', expirationTime)
 
+                // 로그인이 되어있다면 서버로부터 초기 데이터를 가져온다
+
+                getInitialData()
+
                 //로그인 폼 초기화
                 setEmail('')
                 setPassword('')
@@ -61,6 +66,29 @@ const Login = () => {
 
     }
 
+    const getInitialData = async () => {
+        try {
+            const response = await getInitialDataRequest({
+                headers: {
+                    Authorization: `${localStorage.getItem('token')}`
+                },
+            })
+            console.log(response.data)
+            dispatch(changeUser(
+                {
+                    email: response.data.email,
+                    name: response.data.name,
+                    location: response.data.location,
+                    age: response.data.age
+                }
+            )) // store 변경
+            console.log('불러오기 성공')
+
+
+        } catch (error) {
+            console.log('초기데이터 불러오기 실패 ')
+        }
+    }
 
     // 로그인 상태 확인 후 자동 로그아웃 처리
     useEffect(() => {
