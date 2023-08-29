@@ -40,3 +40,8 @@ export async function getInitialDataRequest(headers) {
   const response = await axios.get('http://146.56.180.210:3200/auth/user-data', headers)
   return response
 }
+
+export async function deleteAccountRequest(headers) {
+  const response = await axios.delete('http://146.56.180.210:3200/auth/user', headers)
+  return response
+}

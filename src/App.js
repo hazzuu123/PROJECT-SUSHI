@@ -29,7 +29,10 @@ export default function App() {
       if (userData.email !== "") return
 
       getInitialData(dispatch) // 로그인이 되어있다면 서버로부터 초기데이터를 가져옴
+
+
     }
+
   }, [dispatch])
 
   return (

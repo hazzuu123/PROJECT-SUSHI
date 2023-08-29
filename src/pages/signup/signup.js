@@ -40,7 +40,7 @@ const Signup = () => {
         else { // 토큰이 없다면 회원가입할 준비가 되어있으므로 이메일 입력란에 자동 포커스
             EmailRef.current.focus()
         }
-    })
+    }, [])
 
     /** 회원가입 버튼 클릭 시 */
     const handleSignup = async (event) => {
